@@ -13,12 +13,12 @@
     // use backslash to escape special charachters like "
     echo "Hello world! My name is \"David\"";
     ?>
-    <h3>3.2 Create a PHP variable named and assign it the value "PHP is interesting." 
-        Then, use this variable as the content within an <h4> (heading 4) element.
+    <h3>3.2 Create a PHP variable named $title and assign it the value "PHP is interesting."
+        Then, use this variable as the content within an (heading 4) element.
        </h3>
        <?php
        $title = "PHP is interesting.";
-       echo "<h4> $title</h4>"
+       echo  " <h4> $title </h4> "
         ?>
 
 <h3>3.3 Define three variables: $g1 = 5, $g2 = 4, and $g3 = 5. These variables represent the grades of three students in the course.
