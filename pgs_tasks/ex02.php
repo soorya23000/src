@@ -1,6 +1,14 @@
-<?php 
- $Title = "Exercise1";
- include 'header.php'; ?>   
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Exercise 2: Create universal header, footer, or sidebar-Soorya Rasandi"</title>
+
+    <?php 
+    $title = "Exercise 2: Create universal header, footer, or sidebar-Soorya Rasandi";
+    include 'header.php'; ?>   
         
        
             <div class="row">
