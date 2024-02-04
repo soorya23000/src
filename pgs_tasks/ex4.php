@@ -1,114 +1,126 @@
-<?php include 'header.php'; ?>
+<?php
+$title = "Exercise 4: Control flow and loops-Soorya Rasandi";
+include 'header.php';
+?>
+
 <div class="container">
     <div class="row">
+        <div class="container mt-5">
+     <h4>4.2 If-Else: Write a PHP script to get inputs (age and name) from the user and based on their age,
+             decide if he/she is eligible for voting. (18 or more than 18 years is eligible for voting, use form
+             to get user input).</h4>
 
-
-<body>
-
-
-    <div class="container mt-5">
-
-        <!-- If-Else: Voting Eligibility -->
         <div class="mb-4">
-            <h3>If-Else: Voting Eligibility</h3>
-            <form method="POST">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="age">Age:</label>
-                    <input type="number" class="form-control" id="age" name="age" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Check Eligibility</button>
-            </form>
-            <?php
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $name = $_POST['name'];
-                $age = $_POST['age'];
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" class="form-control" id="age" name="age" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Check Eligibility</button>
+                </form>
 
-                if ($age >= 18) {
-                    echo "<p>$name, you are eligible for voting.</p>";
-                } else {
-                    echo "<p>$name, you are not eligible for voting.</p>";
+                <?php
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    $name = isset($_POST['name']) ? $_POST['name'] : '';
+                    $age = isset($_POST['age']) ? $_POST['age'] : '';
+
+                    if ($age >= 18) {
+                        echo "<p>$name, you are eligible for voting.</p>";
+                    } else {
+                        echo "<p>$name you are not eligible for voting.</p>";
+                    }
                 }
-            }
-            ?>
-        </div>
+                ?>
+            </div>
 
-        <!-- Switch Case: Check if it's August -->
-        <div class="mb-4">
-            <h3>Switch Case: Check if it's August</h3>
-            <?php
-            $currentMonth = date("F");
-            switch ($currentMonth) {
-                case 'August':
-                    echo "<p>It's August, so it's still holiday.</p>";
-                    break;
-                default:
-                    echo "<p>Not August, this is $currentMonth so I don't have any holidays.</p>";
-            }
-            ?>
-        </div>
 
-        <!-- For Loop: Multiplication Table -->
-        <div class="mb-4">
-            <h3>For Loop: Multiplication Table</h3>
-            <?php
-            $numberForTable = 5; // Change this to the desired number
-            for ($i = 1; $i <= 10; $i++) {
-                $result = $numberForTable * $i;
-                echo "<p>$numberForTable x $i = $result</p>";
-            }
-            ?>
-        </div>
+        <h4>4.3 Switch Case: Write a PHP script that gets the current month and prints one of the
+            following responses, depending on whether it's August or not:</h4>
 
-        <!-- While Loop: Print numbers from 1 to n -->
-        <div class="mb-4">
-            <h3>While Loop: Print Numbers from 1 to n</h3>
-            <?php
-            $n = 7; // Change this to the desired number
-            $counter = 1;
-            while ($counter <= $n) {
-                echo "<p>$counter</p>";
-                $counter++;
-            }
-            ?>
-        </div>
+            <div class="mb-4">
 
-        <!-- Foreach Loop: Print Elements of an Array -->
-        <div class="mb-4">
-            <h3>Foreach Loop: Print Elements of an Array</h3>
-            <?php
-            $arrayExample = array("Apple", "Banana", "Orange", "Grapes");
-            foreach ($arrayExample as $element) {
-                echo "<p>$element</p>";
-            }
-            ?>
-        </div>
+                <?php
+                $currentMonth = date("F");
+                switch ($currentMonth) {
+                    case 'August':
+                        echo "<p>It's August, so it's still holiday.</p>";
+                        break;
+                    default:
+                        echo "<p>Not August, this is $currentMonth so I don't have any holidays.</p>";
+                }
+                ?>
+            </div>
 
+
+            <div class="mb-4">
+
+    <h4>4.4 For Loop: Write a PHP script that will print the multiplication table of a number
+        (n, use form to get user input).</h4>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="numberForTable">Enter a number for the multiplication table:</label>
+            <input type="number" class="form-control" id="numberForTable" name="numberForTable" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Table</button>
+    </form>
+
+
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $numberForTable = isset($_POST['numberForTable']) ? (int)$_POST['numberForTable'] : 0;
+        for ($i = 1; $i <= 10; $i++) {
+            $result = $numberForTable * $i;
+            echo "<p>$numberForTable x $i = $result</p>";
+        }
+    }
+    ?>
+</div>
+
+
+    <div class="mb-4">
+   <h4>4.5 While Loop: Write a PHP script that will print all the numbers from 1 to n.
+       (use form to get user input)</h4>
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="nForWhileLoop">Enter a number (n) to print numbers from 1 to n:</label>
+                <input type="number" class="form-control" id="nForWhileLoop" name="nForWhileLoop" required>
+            </div>
+                    <button type="submit" class="btn btn-primary">Print Numbers</button>
+                </form>
+
+
+                <?php
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    $nForWhileLoop = isset($_POST['nForWhileLoop']) ? $_POST['nForWhileLoop'] : '';
+                    $counter = 1;
+                    while ($counter <= $nForWhileLoop) {
+                        echo "<p>$counter</p>";
+                        $counter++;
+                    }
+                }
+                ?>
+            </div>
+
+            <div class="mb-4">
+    <h4>4.6 Foreach Loop: Write a PHP script that will print all the elements of an array.
+        $myarray=("HTML", "CSS", "PHP", "JavaScript").</h4>
+
+                <?php
+                $arrayExample = array("HTML", "CSS", "PHP", "JavaScript");
+                foreach ($arrayExample as $element) {
+                    echo "<p>$element</p>";
+                }
+                ?>
+
+            </div>
+        </div>
     </div>
+</div>
 
-
-         <!-- Universal Footer with File Modification Time -->
-    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <?php
-            $filename = basename(__FILE__);
-            $lastModified = filemtime(__FILE__);
-            echo "<p>Last modified: " . date("F d Y H:i:s.", $lastModified) . " (File: $filename)</p>";
-            ?>
-        </div>
-    
-    </footer>
-
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
-
-</html>
-   </div>
-    </div>
-<?php include 'footer.php'; ?> 
+<?php include 'footer.php'; ?>

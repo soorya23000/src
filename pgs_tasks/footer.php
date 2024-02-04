@@ -21,6 +21,20 @@
                         <p> <img src="images/icon/email_ (1).png" style="background-color: aliceblue;width: 30px; height: 30px; margin-right: 10px;" alt="">kingcocovilla@gmail.com</p>
                     </h5>
 
+                    
+                       <!-- Universal Footer with File Modification Time -->
+                      
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <?php
+            $filename = basename(__FILE__);
+            $lastModified = filemtime(__FILE__);
+            echo "<p>Last modified: " . date("F d Y H:i:s.", $lastModified) . " (File: $filename)</p>";
+            ?>
+         
+        </div>
+    </footer>
+
      
                 </div>
             </div>
@@ -35,6 +49,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
+
+     
 </body>
 
 </html>

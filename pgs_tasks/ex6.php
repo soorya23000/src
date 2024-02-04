@@ -1,9 +1,9 @@
-<?php include 'header.php'; ?>
-<div class="container">
-    <div class="row">
+<?php
+$title = "-Soorya Rasandi";
+include 'header.php';
+?>
 
 
 
-    </div>
-    </div>
-<?php include 'footer.php'; ?>   
+ 
+<?php include 'footer.php'; ?>

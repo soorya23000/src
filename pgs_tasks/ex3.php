@@ -1,124 +1,117 @@
-<?php include 'header.php'; ?>
-<div class="container">
-    <div class="row">
+<?php
+$title = "Exercise 3: Variable, Strings & Operators-Soorya Rasandi";
+include 'header.php'; ?>
 
 
-<body>
+<h4>3.2 Form Creation: Create a simple HTML form to collect the user’s Firstname and Lastname. Use the echo statement to print
+     “Hello  [Firstname]  [Lastname], You are welcome to my site.” inside an h3 tag.</h4>
 
-<h3> 02.Form Creation: Create a simple HTML form to collect the user’s Firstname and Lastname. Use the echo statement
-    to print “Hello [Firstname] [Lastname], You are welcome to my site.” inside an h3.
-     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
+    
+  <div class="input-group">
 
-<body>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    Firstname: <input type="text" name="firstname"aria-label="First name" class="form-control"> <br>
+    Lastname: <input type="text" name="lastname"aria-label="Last name" class="form-control"> <br>
+    <input type="submit" value="submit">
+    </form>
+
+ </div>
 
 
-    <div class="container mt-5">
+ <?php
+ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        <!-- Form Section -->
-        <div class="row">
-            <div class="col-md-6">
-                <form>
-                    <div class="form-group">
-                        <label for="firstname">First Name</label>
-                        <input type="text" class="form-control" id="firstname" placeholder="Enter your First Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname">Last Name</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Enter your Last Name">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+              $firstname=$_POST["firstname"];
+              $lastname=$_POST["lastname"];
 
-                <!-- Display Hello Message -->
-                <?php
-                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $firstname = $_POST['firstname'];
-                    $lastname = $_POST['lastname'];
-                    echo "<h3>Hello $firstname $lastname, You are welcome to my site.</h3>";
-                }
-                ?>
-            </div>
+echo "Hello "  . $firstname . $lastname .  ",<br> You are welcome to my site.";
+ }
+?>
 
-            <!-- Table Section -->
-            <div class="col-md-6">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Header 1</th>
-                            <th scope="col">Header 2</th>
-                            <th scope="col">Header 3</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Row 1, Col 1</td>
-                            <td>Row 1, Col 2</td>
-                            <td>Row 1, Col 3</td>
-                        </tr>
-                        <tr>
-                            <td>Row 2, Col 1</td>
-                            <td>Row 2, Col 2</td>
-                            <td>Row 2, Col 3</td>
-                        </tr>
-                        <tr>
-                            <td>Row 3, Col 1</td>
-                            <td>Row 3, Col 2</td>
-                            <td>Row 3, Col 3</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<h4>3.4 HTML Table: Prepare a simple HTML table and apply Bootstrap styles to it. Note, you have already done a table in Exercise 1.
+    If you wish, you can use the same table. </h4>
 
-        <!-- PHP String Variables -->
-        <?php
-        $str1 = "Hello";
-        $str2 = "World";
-        $joinedString = $str1 . ' ' . $str2;
-        echo "<p>Joined String: $joinedString</p>";
-        echo "<p>Length of the String: " . strlen($joinedString) . "</p>";
-        ?>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Country</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Rahul</td>
+      <td>India</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Arnold</td>
+      <td>England</td>
+      <td>26</td>
+    </tr>
+    <tr>
+    <th scope="row">3</th>
+      <td>Shane</td>
+      <td>Canada</td>
+      <td>22</td>>
+    </tr>
+  </tbody>
+</table>
 
-        <!-- PHP Number Addition -->
-        <?php
-        $num1 = 298;
-        $num2 = 234;
-        $num3 = 46;
-        $sum = $num1 + $num2 + $num3;
-        echo "<p>Sum of Numbers: $sum</p>";
-        ?>
+<h4>3.5 String Variables: Write a PHP script with two string variables ($str1 = "Hello"; $str2 = "World";). 
+    Join them together and print the length of the string.</h4>
 
-        <!-- PHP Browser Detection -->
-        <?php
-        $browser = $_SERVER['HTTP_USER_AGENT'];
-        echo "<p>Browser: $browser</p>";
-        ?>
+<?php
+$str1 = "Hello";
+$str2 = "World";
+$joinedString = $str1 . $str2;
 
-    </div>
+echo "Length of the joinedString: " . strlen($joinedString);
 
-    <!-- Universal Footer with File Modification Time -->
-    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <?php
-            $filename = basename(__FILE__);
-            $lastModified = filemtime(__FILE__);
-            echo "<p>Last modified: " . date("F d Y H:i:s.", $lastModified) . " (File: $filename)</p>";
-            ?>
-        </div>
-    </footer>
 
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
+?>
 
-</html>
+<h4>3.6 Number Addition: Write a script to add up the numbers: 298, 234, 46. Use variables to store these numbers and an
+    echo statement to output your answer.</h4>
+<?php
+$a=298;
+$b=234;
+$c=46;
 
-     
-        </div>
-    </div>
-    <?php include 'footer.php'; ?>  
-        
+$sum= $a + $b +$c;
+
+echo "Sum:" . $sum;
+
+
+?> 
+
+<h4>3.7 Browser Detection: Write a PHP script to detect the browser being used to view your pages. Hint: Use predefined variables:
+    $_SERVER</h4>
+
+<?php
+echo $_SERVER['PHP_SELF'];
+echo "<br>";
+echo $_SERVER['SERVER_NAME'];
+echo "<br>";
+echo $_SERVER['HTTP_HOST'];
+echo "<br>";
+echo $_SERVER['HTTP_REFERER'];
+echo "<br>";
+echo $_SERVER['HTTP_USER_AGENT'];
+echo "<br>";
+echo $_SERVER['SCRIPT_NAME'];
+?>
+ <?php include 'footer.php'; ?>
+
+
+
+
+
+
+
+
+
