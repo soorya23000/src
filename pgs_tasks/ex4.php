@@ -31,7 +31,7 @@ include 'header.php';
                     if ($age >= 18) {
                         echo "<p>$name, you are eligible for voting.</p>";
                     } else {
-                        echo "<p>$name you are not eligible for voting.</p>";
+                        echo "<p>$name you are not eligible for voting.You must be at least 18 years old to vote</p>";
                     }
                 }
                 ?>
@@ -42,21 +42,25 @@ include 'header.php';
             following responses, depending on whether it's August or not:</h4>
 
             <div class="mb-4">
+           
+            <?php
+            $currentMonth = date("F");
+            switch ($currentMonth) {
+                case 'August':
+                    echo "<p>It's August, so it's still holiday.</p>";
+                    break;
+                default:
+                    echo "<p>Not August, this is $currentMonth so I don't have any holidays.</p>";
+            }
+            ?>
+        </div>
 
-                <?php
-                $currentMonth = date("F");
-                switch ($currentMonth) {
-                    case 'August':
-                        echo "<p>It's August, so it's still holiday.</p>";
-                        break;
-                    default:
-                        echo "<p>Not August, this is $currentMonth so I don't have any holidays.</p>";
-                }
-                ?>
-            </div>
+       
+        <div class="mb-4">
 
 
-            <div class="mb-4">
+
+           
 
     <h4>4.4 For Loop: Write a PHP script that will print the multiplication table of a number
         (n, use form to get user input).</h4>

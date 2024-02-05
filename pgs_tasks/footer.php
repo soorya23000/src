@@ -24,16 +24,12 @@
                     
                        <!-- Universal Footer with File Modification Time -->
                       
-    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <?php
-            $filename = basename(__FILE__);
-            $lastModified = filemtime(__FILE__);
-            echo "<p>Last modified: " . date("F d Y H:i:s.", $lastModified) . " (File: $filename)</p>";
-            ?>
-         
-        </div>
-    </footer>
+    <?php
+    $current_file_name = basename($_SERVER['PHP_SELF']);
+    echo "File Name: " . $current_file_name . "<br>";
+    $file_last_modified = filemtime(__FILE__);
+    echo "Last modified: " . date("F d Y H:i:s.", $file_last_modified);
+  ?>
 
      
                 </div>
